@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Oracle: Decryption Paradox</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body {
+            background-color: #020203;
+            color: #00ff66;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .terminal {
+            width: 100%;
+            max-width: 460px;
+            background: #05080c;
+            border: 1px solid #00ff66;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #00ff66;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .output-box {
+            background: #010102;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            min-height: 120px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #00ffbb;
+            border: 1px solid #112211;
+        }
+        .hint {
+            color: #ffaa00;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        input[type="text"] {
+            width: 100%;
+            background: #000;
+            border: 1px solid #00ff66;
+            color: #ffff00;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            outline: none;
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            background: #002211;
+            border: 1px solid #00ff66;
+            color: #00ff66;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        button:hover {
+            background: #00ff66;
+            color: #000;
+        }
+        .err-msg {
+            color: #ff3333;
+            font-weight: bold;
+        }
+        .win-box {
+            background: #222;
+            border: 2px dashed #ffff00;
+            padding: 15px;
+            color: #ffff00;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="terminal">
+    <div class="header">═ TERMINAL DEKRIPSI QUANTUM v2.7 ═</div>
+    
+    <div class="output-box" id="display">
+        [SYSTEM]: Membuka gerbang logika peretasan sandi...<br><br>
+        Gua tantang otak lu buat mecahin 3 lapis enkripsi berat ini. Salah ketik satu huruf = GAGAL.<br><br>
+        Klik tombol di bawah untuk mulai menganalisis sandi pertama.
+    </div>
+    
+    <div id="hint-box" class="hint"></div>
+
+    <div id="interaction">
+        <button onclick="startHack()">▶ MULAI PERETASAN LOGIKA</button>
+    </div>
+</div>
+
+<script>
+    let stage = 1;
+
+    const display = document.getElementById('display');
+    const hintBox = document.getElementById('hint-box');
+    const interaction = document.getElementById('interaction');
+
+    function startHack() {
+        loadStage1();
+    }
+
+    // LAYER 1: Cipher Geser Sederhana (Caesar Cipher)
+    function loadStage1() {
+        stage = 1;
+        hintBox.innerText = "Petunjuk: Pola pergeseran alfabet mundur 1 langkah (Contoh: B jadi A, C jadi B). Semua huruf KAPITAL.";
+        display.innerHTML = `<b>[STAGE 1: CAESAR CIPHER BLOCKED]</b><br><br>
+        Sandi Keamanan Terdeteksi:<br>
+        <span style="color:#ffff00; font-size:1.2rem; letter-spacing:2px;">"BMCFSU FJNTUFJO"</span><br><br>
+        Siapa nama ilmuwan genius di atas setelah lu pecahin kodenya?`;
+        
+        interaction.innerHTML = `
+            <input type="text" id="ans" placeholder="Ketik jawaban di sini..." autocomplete="off">
+            <button onclick="checkAnswer()">🔓 KIRIM KUNCI DEKRIPSI</button>
+        `;
+    }
+
+    // LAYER 2: Logika Binari / Representasi ASCII Simpel
+    function loadStage2() {
+        stage = 2;
+        hintBox.innerText = "Petunjuk: Angka di bawah adalah susunan nomor urut alfabet (1=A, 2=B, 3=C, dst). Gabungkan menjadi 1 kata puitis KAPITAL.";
+        display.innerHTML = `<b>[STAGE 2: QUANTUM MEMORY CORE]</b><br><br>
+        Sandi Frekuensi Otak Terdeteksi:<br>
+        <span style="color:#ffff00; font-size:1.2rem; letter-spacing:3px;">"2-12-1-3-11  8-15-12-5"</span><br><br>
+        Objek kosmis apa yang dimaksud oleh susunan angka di atas?`;
+        
+        interaction.innerHTML = `
+            <input type="text" id="ans" placeholder="Ketik jawaban di sini..." autocomplete="off">
+            <button onclick="checkAnswer()">🔓 KIRIM KUNCI DEKRIPSI</button>
+        `;
+    }
+
+    // LAYER 3: Pembalikan Eksistensial (Anagram / Logika Terbalik)
+    function loadStage3() {
+        stage = 3;
+        hintBox.innerText = "Petunjuk: Sebuah paham filsafat ke hampa-an yang hurufnya sengaja diacak-acak susunannya. Ketik dengan huruf KAPITAL.";
+        display.innerHTML = `<b>[STAGE 3: THE END OF VOID]</b><br><br>
+        Sandi Inti Kebuntuan Terdeteksi:<br>
+        <span style="color:#ffff00; font-size:1.2rem; letter-spacing:2px;">"M E S I L I H I N"</span><br><br>
+        Susun kembali kata acak di atas menjadi nama teori filsafat yang benar!`;
+        
+        interaction.innerHTML = `
+            <input type="text" id="ans" placeholder="Ketik jawaban di sini..." autocomplete="off">
+            <button onclick="checkAnswer()">🔓 KIRIM KUNCI DEKRIPSI</button>
+        `;
+    }
+
+    function checkAnswer() {
+        const input = document.getElementById('ans').value.trim().toUpperCase();
+        
+        if (stage === 1) {
+            // BMCFSU FJNTUFJO -> ALBERT EINSTEIN
+            if (input === "ALBERT EINSTEIN") {
+                loadStage2();
+            } else {
+                triggerError();
+            }
+        } else if (stage === 2) {
+            // 2-12-1-3-11 8-15-12-5 -> BLACK HOLE (B=2, L=12, A=1, C=3, K=11 | H=8, O=15, L=12, E=5)
+            if (input === "BLACK HOLE") {
+                loadStage3();
+            } else {
+                triggerError();
+            }
+        } else if (stage === 3) {
+            // MESILIHIN -> NIHILISME
+            if (input === "NIHILISME") {
+                triggerWin();
+            } else {
+                triggerError();
+            }
+        }
+    }
+
+    function triggerError() {
+        alert("❌ ACCESS DENIED! Kode salah, sistem mengunci input. Coba cek logika lu lagi!");
+    }
+
+    function triggerWin() {
+        hintBox.innerText = "";
+        display.innerHTML = `<span style="color:#ffff00; font-weight:bold;">[SUCCESS]: DEKRIPSI SELESAI TOTAL!</span><br><br>
+        Otak lu terbukti bersih dari 'lag' kognitif. Lu berhasil menembus 3 gerbang sandi logika terberat gua.<br><br>
+        Screenshot layar ini sekarang untuk klaim GoPay 5K ke WA gua:`;
+        
+        const token = "HACK-" + Math.floor(5000 + Math.random() * 4000) + "-NODE";
+        interaction.innerHTML = `<div class="win-box">${token}</div>
+        <button style="margin-top:15px;" onclick="location.reload()">🔄 REBOOT TERMINAL</button>`;
+    }
+</script>
+
+</body>
+</html>
